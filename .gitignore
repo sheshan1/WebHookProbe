@@ -1,0 +1,70 @@
+# Local environment files (keep templates tracked)
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Java / Maven / Gradle
+**/target/
+**/build/
+.gradle/
+*.class
+
+# Go build and test output
+runner/bin/
+*.test
+coverage.out
+coverage.html
+
+# Node / React
+**/node_modules/
+frontend/dist/
+frontend/.vite/
+*.tsbuildinfo
+
+# Generated test reports and local runtime data
+coverage/
+playwright-report/
+test-results/
+reports/
+.local/
+*.log
+
+# Editor and operating-system files
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Spring Initializr generated help
+/receiver/HELP.md
+
+# Eclipse / Spring Tool Suite
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# Additional IntelliJ files
+*.iws
+*.ipr
+
+# NetBeans receiver metadata and output
+/receiver/nbproject/private/
+/receiver/nbbuild/
+/receiver/dist/
+/receiver/nbdist/
+/receiver/.nb-gradle/
+
+# Keep source directories named target or build trackable
+!receiver/src/main/**/target/
+!receiver/src/test/**/target/
+!receiver/src/main/**/build/
+!receiver/src/test/**/build/
