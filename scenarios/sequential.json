@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "name": "Generic sequential delivery",
+  "description": "Start compose.samples.yaml; import this file into the UI.",
+  "targetUrl": "http://fixture:8090/webhook",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"eventId\": \"sample-sequential\"}",
+  "copies": 5,
+  "concurrency": 1,
+  "timeoutMs": 5000,
+  "expectedStatuses": [
+    200
+  ],
+  "verification": {
+    "url": "http://fixture:8090/state/sample-sequential",
+    "headers": {},
+    "assertions": [
+      {
+        "pointer": "/notificationCount",
+        "equals": 1
+      }
+    ],
+    "pollIntervalMs": 100,
+    "timeoutMs": 5000,
+    "requestTimeoutMs": 1000,
+    "stableForMs": 500
+  }
+}

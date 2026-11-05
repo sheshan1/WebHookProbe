@@ -1,0 +1,13 @@
+# Optional deterministic receiver; start together with compose.yaml.
+services:
+  fixture:
+    build:
+      context: ./scripts
+      dockerfile: sample-receiver.Dockerfile
+    ports:
+      - "127.0.0.1:${FIXTURE_PORT:-8090}:8090"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health',timeout=2)"]
+      interval: 3s
+      timeout: 3s
+      retries: 20

@@ -1,0 +1,5 @@
+# Merge with compose.yaml only when exposing the database for native development.
+services:
+  db:
+    ports:
+      - "127.0.0.1:15432:5432"
