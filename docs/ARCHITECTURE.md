@@ -427,7 +427,7 @@ TEST_BASE_URL=http://127.0.0.1:8082 TEST_FIXTURE_URL=http://fixture:8090 npm run
 
 Tests are serial because one API process admits one active run. TEST_DEMO=false skips Java-example cases for core-only checks; absent TEST_FIXTURE_URL skips fixture tests. Native tests use the Vite default base and native fixture address. Tests exercise normal user entry, placeholder semantics, import/export, redaction, cancellation, partial reports, typed checks, report downloads, reload and mobile overflow. This is not a complete accessibility audit.
 
-The GitHub Actions workflow configures PostgreSQL18, JDK25, Go1.26 and Node22; runs source checks, native services, browser checks and image builds; collects failures. Remote CI and publication have not been claimed as complete. Source-release license remains undecided. Repeatable load/resource measurement and external fresh-machine setup feedback also remain separate work.
+The GitHub Actions workflow configures PostgreSQL18, JDK25, Go1.26 and Node22; runs source checks, native services, browser checks and image builds; collects failures. The workflow explicitly grants read-only contents permission. Its actual execution status is available in [GitHub Actions](https://github.com/sheshan1/WebHookProbe/actions); local test success does not establish remote CI success. The project uses the [MIT License](../LICENSE). Repeatable load/resource measurement and external fresh-machine setup feedback also remain separate work.
 
 ## Repository layout
 
@@ -449,3 +449,10 @@ An overall pass proves only the configured HTTP and finite observation checks. U
 ## Local verification of this cleanup
 
 On31 October2026, the revised UI passed15 browser cases, including blank/focus-only placeholders, preservation of typed input, form-only backend integration, both cancellation paths, redacted settings, mobile overflow and all six parcel comparisons. Java verification passed11 tests with no failures/errors/skips using the full Docker JDK25; unused validation/test starters were removed. Go formatting/vet/race checks passed, including a regression retaining the final matching observation when history is capped. The42-case HTTP workflow verifier passed. The documented host.docker.internal path was verified against a separate synthetic host backend. Production throughput, a complete accessibility audit, external fresh-machine setup and remote CI were not claimed by these checks.
+
+
+## Pre-publication verification
+
+On 6 November 2026, a fresh clone of committed revision `d87bb4a` started the default Docker stack with only the frontend and runner, without a `.env` file or host language installations. The optional Python fixture also started successfully; a sample run returned HTTP 200 and independently verified `notificationCount = 1`. This checks a clean checkout on the current machine, not a different operating system or a clone authenticated through GitHub.
+
+The frontend pins the transitive development dependency `minimatch` to `11.0.1` through an npm override to address [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249). All affected dependency paths in the inspected tree were development lint tooling. The patched dependency set passed a clean `npm ci`, TypeScript/production build and ESLint, with zero findings from `npm audit` at verification time. Remove the override when upstream tooling adopts a patched version and recheck those commands. An audit result is a time-specific dependency check, not a complete security review.

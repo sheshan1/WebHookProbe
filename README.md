@@ -8,15 +8,21 @@ A **webhook** is an HTTP request carrying an event, such as “an order was paid
 
 ## What you need
 
-- Docker with Docker Compose installed and running. 
-- This project folder, downloaded as a ZIP or checked out with Git.
+- Docker with Docker Compose installed and running.
+- This project folder, downloaded from [GitHub](https://github.com/sheshan1/WebHookProbe) as a ZIP and extracted, or checked out with Git.
 - A browser.
 
 You do **not** need Java, Go, Node.js, Python or PostgreSQL installed to run the application with Docker. The normal application starts only the web interface and the Go runner. The Java receiver and database are optional examples.
 
 ## Start the application
 
-1. Open a terminal in the project folder: the folder containing `compose.yaml`.
+1. Open a terminal in the project folder: the folder containing `compose.yaml`. If you use Git, you can obtain it with:
+
+   ```bash
+   git clone https://github.com/sheshan1/WebHookProbe.git
+   cd WebHookProbe
+   ```
+
 2. Check that Docker is ready:
 
    ```bash
@@ -235,4 +241,6 @@ docker compose logs --tail=80 frontend runner
 
 First-release limits: POST delivery only; one payload per run; one active API run; up to 1000 copies and 50 concurrent requests; no automatic retries, signature generation, user accounts or public hosting. Run locally against endpoints you are authorized to test.
 
-License selection and source publication remain pending the author's decision.
+## License
+
+Licensed under the [MIT License](LICENSE).
